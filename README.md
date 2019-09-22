@@ -33,7 +33,7 @@ HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 restTemplate.exchange("https://httpbin.org/get", HttpMethod.GET, requestEntity, String.class);
 ```
 
-Using a request logger different then CurlRequestLogger
+Using a request logger different than CurlRequestLogger
 ```
 RestTemplate restTemplate = new RestTemplateLogger(new MyCustomRequestLogger());
 ```
