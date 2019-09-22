@@ -48,3 +48,9 @@ https://httpbin.org/get \
 -H 'x-foo: bar' \
 -H 'Content-Length: 0'
 ```
+
+## License
+
+RestTemplate-Logger is free and open source (MIT License). Use it as you wish.
+
+[Read License](https://github.com/anotheria/moskito/blob/master/LICENSE)
