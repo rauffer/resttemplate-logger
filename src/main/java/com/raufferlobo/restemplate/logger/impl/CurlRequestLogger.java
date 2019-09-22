@@ -1,4 +1,4 @@
-package com.raufferlobo.restemplate.logging.impl;
+package com.raufferlobo.restemplate.logger.impl;
 
 import java.util.Map;
 
@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
  */
 public class CurlRequestLogger extends AbstractRequestLogger {
 
-  private static final String CURL_COMMAND_START = LINE_SEPARATOR + "-X %s \\";
+  private static final String CURL_METHOD_COMMAND = LINE_SEPARATOR + "-X %s \\";
   private static final String URI_COMMAND = LINE_SEPARATOR + "%s \\";
   private static final String HEADER_COMMAND = LINE_SEPARATOR + "-H '%s: %s' \\";
   private static final String BODY_COMMAND = LINE_SEPARATOR + "-d '%s' \\";
@@ -29,7 +29,7 @@ public class CurlRequestLogger extends AbstractRequestLogger {
 
   @Override
   protected void appendMethod(StringBuilder command, String method) {
-    command.append(String.format(CURL_COMMAND_START, method));
+    command.append(String.format(CURL_METHOD_COMMAND, method));
   }
 
   @Override

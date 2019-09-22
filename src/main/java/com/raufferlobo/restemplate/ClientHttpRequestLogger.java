@@ -12,14 +12,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.ClientHttpResponse;
 
-import com.raufferlobo.restemplate.logging.RequestLogger;
+import com.raufferlobo.restemplate.logger.RequestLogger;
 
-public class LoggingClientHttpRequest implements ClientHttpRequest {
+public class ClientHttpRequestLogger implements ClientHttpRequest {
 
   private RequestLogger requestLogger;
   private ClientHttpRequest clientHttpRequest;
 
-  public LoggingClientHttpRequest(RequestLogger requestLogger, ClientHttpRequest clientHttpRequest) {
+  public ClientHttpRequestLogger(RequestLogger requestLogger, ClientHttpRequest clientHttpRequest) {
     this.requestLogger = requestLogger;
     this.clientHttpRequest = clientHttpRequest;
   }

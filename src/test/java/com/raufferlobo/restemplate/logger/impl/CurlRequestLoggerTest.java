@@ -1,10 +1,12 @@
-package com.raufferlobo.restemplate.logging.impl;
+package com.raufferlobo.restemplate.logger.impl;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.raufferlobo.restemplate.logger.impl.CurlRequestLogger;
 
 public class CurlRequestLoggerTest {
 

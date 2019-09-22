@@ -7,25 +7,25 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.web.client.RestTemplate;
 
-import com.raufferlobo.restemplate.logging.RequestLogger;
-import com.raufferlobo.restemplate.logging.impl.CurlRequestLogger;
+import com.raufferlobo.restemplate.logger.RequestLogger;
+import com.raufferlobo.restemplate.logger.impl.CurlRequestLogger;
 
-public class LoggingRestTemplate extends RestTemplate {
+public class RestTemplateLogger extends RestTemplate {
 
   private RequestLogger requestLogger;
 
-  public LoggingRestTemplate() {
+  public RestTemplateLogger() {
       this(new CurlRequestLogger());
   }
 
-  public LoggingRestTemplate(RequestLogger requestLogger) {
+  public RestTemplateLogger(RequestLogger requestLogger) {
       this.requestLogger = requestLogger;
   }
 
   @Override
   protected ClientHttpRequest createRequest(URI url, HttpMethod method) throws IOException {
     ClientHttpRequest request = super.createRequest(url, method);
-    return new LoggingClientHttpRequest(requestLogger, request);
+    return new ClientHttpRequestLogger(requestLogger, request);
   }
 
   public RequestLogger getRequestLogger() {

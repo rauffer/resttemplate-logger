@@ -9,15 +9,15 @@ import org.mockito.Mockito;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
 
-import com.raufferlobo.restemplate.logging.RequestLogger;
-import com.raufferlobo.restemplate.logging.impl.CurlRequestLogger;
+import com.raufferlobo.restemplate.logger.RequestLogger;
+import com.raufferlobo.restemplate.logger.impl.CurlRequestLogger;
 
-public class LoggingRestTemplateTest {
+public class RestTemplateLoggerTest {
 
   @Test
   public void mustSetCurlRequestLoggerAsDefaultRequestLogger() {
     
-    LoggingRestTemplate restTemplate = new LoggingRestTemplate();
+    RestTemplateLogger restTemplate = new RestTemplateLogger();
     
     Assert.assertEquals(CurlRequestLogger.class, restTemplate.getRequestLogger().getClass());
     
@@ -28,7 +28,7 @@ public class LoggingRestTemplateTest {
     
     RequestLogger mockedRequestLogger = Mockito.mock(RequestLogger.class);
     
-    LoggingRestTemplate restTemplate = new LoggingRestTemplate(mockedRequestLogger);
+    RestTemplateLogger restTemplate = new RestTemplateLogger(mockedRequestLogger);
     
     Assert.assertSame(mockedRequestLogger, restTemplate.getRequestLogger());
     
@@ -37,18 +37,18 @@ public class LoggingRestTemplateTest {
   @Test
   public void mustCreateLoggingClientHttpRequestWhenCreatingRequest() throws IOException {
     
-    LoggingRestTemplate restTemplate = new LoggingRestTemplate();
+    RestTemplateLogger restTemplate = new RestTemplateLogger();
     
     ClientHttpRequest request = restTemplate.createRequest(URI.create("http://localhost"), HttpMethod.GET);
     
-    Assert.assertTrue(request instanceof LoggingClientHttpRequest);
+    Assert.assertTrue(request instanceof ClientHttpRequestLogger);
     
   }
   
   @Test
   public void mustOverrideRequestLoggerWhenCallingSetRequestLogger() {
     
-    LoggingRestTemplate restTemplate = new LoggingRestTemplate();
+    RestTemplateLogger restTemplate = new RestTemplateLogger();
 
     Assert.assertTrue( restTemplate.getRequestLogger() instanceof CurlRequestLogger);
     

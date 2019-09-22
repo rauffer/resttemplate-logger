@@ -1,4 +1,4 @@
-package com.raufferlobo.restemplate.logging;
+package com.raufferlobo.restemplate.logger;
 
 import java.util.Map;
 

@@ -14,10 +14,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
 
-import com.raufferlobo.restemplate.LoggingClientHttpRequest;
-import com.raufferlobo.restemplate.logging.RequestLogger;
+import com.raufferlobo.restemplate.ClientHttpRequestLogger;
+import com.raufferlobo.restemplate.logger.RequestLogger;
 
-public class LoggingClientHttpRequestTest {
+public class ClientHttpRequestLoggerTest {
   
   @Test
   public void mustReturnTheHttpMethodDefinedInClientHttpRequest() {
@@ -26,7 +26,7 @@ public class LoggingClientHttpRequestTest {
     ClientHttpRequest mockedClientRequest = Mockito.mock(ClientHttpRequest.class);
     Mockito.when(mockedClientRequest.getMethod()).thenReturn(HttpMethod.GET);
     
-    LoggingClientHttpRequest loggingClientHttpRequest = new LoggingClientHttpRequest(mockedRequestLogger, mockedClientRequest);
+    ClientHttpRequestLogger loggingClientHttpRequest = new ClientHttpRequestLogger(mockedRequestLogger, mockedClientRequest);
     
     HttpMethod method = loggingClientHttpRequest.getMethod();
     
@@ -41,7 +41,7 @@ public class LoggingClientHttpRequestTest {
     ClientHttpRequest mockedClientRequest = Mockito.mock(ClientHttpRequest.class);
     Mockito.when(mockedClientRequest.getMethodValue()).thenReturn("PUT");
     
-    LoggingClientHttpRequest loggingClientHttpRequest = new LoggingClientHttpRequest(mockedRequestLogger, mockedClientRequest);
+    ClientHttpRequestLogger loggingClientHttpRequest = new ClientHttpRequestLogger(mockedRequestLogger, mockedClientRequest);
     
     String methodValue = loggingClientHttpRequest.getMethodValue();
     
@@ -57,7 +57,7 @@ public class LoggingClientHttpRequestTest {
     URI targetUri = new URI("http://localhost/my-uri");
     Mockito.when(mockedClientRequest.getURI()).thenReturn(targetUri);
     
-    LoggingClientHttpRequest loggingClientHttpRequest = new LoggingClientHttpRequest(mockedRequestLogger, mockedClientRequest);
+    ClientHttpRequestLogger loggingClientHttpRequest = new ClientHttpRequestLogger(mockedRequestLogger, mockedClientRequest);
     
     URI uri = loggingClientHttpRequest.getURI();
     
@@ -74,7 +74,7 @@ public class LoggingClientHttpRequestTest {
     targetHeaders.add("my-header", "the-value");
     Mockito.when(mockedClientRequest.getHeaders()).thenReturn(targetHeaders);
     
-    LoggingClientHttpRequest loggingClientHttpRequest = new LoggingClientHttpRequest(mockedRequestLogger, mockedClientRequest);
+    ClientHttpRequestLogger loggingClientHttpRequest = new ClientHttpRequestLogger(mockedRequestLogger, mockedClientRequest);
     
     HttpHeaders headers = loggingClientHttpRequest.getHeaders();
     
@@ -96,7 +96,7 @@ public class LoggingClientHttpRequestTest {
     
     Mockito.when(mockedClientRequest.getBody()).thenReturn(body);
     
-    LoggingClientHttpRequest loggingClientHttpRequest = new LoggingClientHttpRequest(mockedRequestLogger, mockedClientRequest);
+    ClientHttpRequestLogger loggingClientHttpRequest = new ClientHttpRequestLogger(mockedRequestLogger, mockedClientRequest);
     
     OutputStream readedBody = loggingClientHttpRequest.getBody();
     
@@ -130,7 +130,7 @@ public class LoggingClientHttpRequestTest {
     Mockito.when(mockedClientRequest.getURI()).thenReturn(new URI("http://localhost/my-uri"));
     Mockito.when(mockedClientRequest.getBody()).thenReturn(body);
     
-    LoggingClientHttpRequest loggingClientHttpRequest = new LoggingClientHttpRequest(mockedRequestLogger, mockedClientRequest);
+    ClientHttpRequestLogger loggingClientHttpRequest = new ClientHttpRequestLogger(mockedRequestLogger, mockedClientRequest);
     
     loggingClientHttpRequest.execute();
     
@@ -154,7 +154,7 @@ public class LoggingClientHttpRequestTest {
     Mockito.when(mockedClientRequest.getURI()).thenReturn(new URI("http://localhost/my-uri"));
     Mockito.when(mockedClientRequest.getBody()).thenReturn(null);
     
-    LoggingClientHttpRequest loggingClientHttpRequest = new LoggingClientHttpRequest(mockedRequestLogger, mockedClientRequest);
+    ClientHttpRequestLogger loggingClientHttpRequest = new ClientHttpRequestLogger(mockedRequestLogger, mockedClientRequest);
     
     loggingClientHttpRequest.execute();
     
