@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.raufferlobo</groupId>
   <artifactId>resttemplate-logger</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2</version>
   <name>resttemplate-logger</name>
   <description>This library logs all RestTemplate http calls</description>
   <url>http://raufferlobo.com/en/post/resttemplate-logger</url>
@@ -106,7 +106,7 @@
     <connection>scm:git:git://github.com/rauffer/resttemplate-logger.git</connection>
     <developerConnection>scm:git:https://github.com/rauffer/resttemplate-logger.git</developerConnection>
     <url>http://github.com/rauffer/resttemplate-logger/tree/master</url>
-    <tag>HEAD</tag>
+    <tag>resttemplate-logger-1.0.2</tag>
   </scm>
 
   <distributionManagement>
